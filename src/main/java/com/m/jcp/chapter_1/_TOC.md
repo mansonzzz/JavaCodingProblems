@@ -4,4 +4,4 @@
 4. [checking whether a string contains only digits](Checking_whether_a_string_contains_only_digits.java)
 5. [counting vowels and consonants](Counting_vowels_and_consonants.java)
 6. [counting the occurrences of a certain character](Counting_the_occurrences_of_a_certain_character.java)
-
+7. [joining multiple strings with a delimiter](Joining_multiple_strings_with_a_delimiter.java)
