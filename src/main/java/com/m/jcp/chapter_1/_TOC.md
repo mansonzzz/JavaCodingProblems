@@ -6,3 +6,4 @@
 6. [counting the occurrences of a certain character](Counting_the_occurrences_of_a_certain_character.java)
 7. [joining multiple strings with a delimiter](Joining_multiple_strings_with_a_delimiter.java)
 8. [generating all permutations](Generating_all_permutations.java)
+9. [checking whether a string is a palindrome](Checking_whether_a_string_is_a_palindrome.java)
