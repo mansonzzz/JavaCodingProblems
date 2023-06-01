@@ -70,14 +70,9 @@ public class Finding_the_character_with_the_most_appearances {
     }
 
     public static Pair<Character, Long> maxOccurrenceCharacterV3(String str) {
-        return str.chars()
-                .filter(c -> !Character.isWhitespace(c))
-                .mapToObj(c -> (char) c)
-                .collect(groupingBy(c -> c, Collectors.counting()))
-                .entrySet()
-                .stream()
-                .max(comparingByValue())
-                .map(e -> Pair.of(e.getKey(), e.getValue()))
-                .orElse(Pair.of(Character.MIN_VALUE, -1L));
+        var characterStream = str.chars().filter(c -> !Character.isWhitespace(c)).mapToObj(c -> (char) c);
+        var characterCounterMap = characterStream.collect(groupingBy(c -> c, Collectors.counting()));
+        var resultMap = characterCounterMap.entrySet().stream().max(comparingByValue()).orElse(Map.entry(Character.MIN_VALUE, -1L));
+        return Pair.of(resultMap.getKey(), resultMap.getValue());
     }
 }
