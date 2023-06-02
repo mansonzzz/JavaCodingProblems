@@ -9,4 +9,5 @@
 9. [checking whether a string is a palindrome](Checking_whether_a_string_is_a_palindrome.java)
 10. [finding the character with the most appearances](Finding_the_character_with_the_most_appearances.java)
 11. [sorting an array of strings by length](Sorting_an_array_of_strings_by_length.java)
-12. [Counting substring occurrences in a string](Counting_substring_occurrences_in_a_string.java)
+12. [counting substring occurrences in a string](Counting_substring_occurrences_in_a_string.java)
+13. [checking whether two strings are anagrams](Checking_whether_two_strings_are_anagrams.java)
