@@ -8,3 +8,4 @@
 8. [generating all permutations](Generating_all_permutations.java)
 9. [checking whether a string is a palindrome](Checking_whether_a_string_is_a_palindrome.java)
 10. [finding the character with the most appearances](Finding_the_character_with_the_most_appearances.java)
+11. [sorting an array of strings by length](Sorting_an_array_of_strings_by_length.java)
