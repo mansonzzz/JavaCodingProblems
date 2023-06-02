@@ -13,3 +13,4 @@
 13. [checking whether two strings are anagrams](Checking_whether_two_strings_are_anagrams.java)
 14. [concatenating the same string n times](Concatenating_the_same_string_n_times.java)
 15. [removing leading and trailing spaces](Removing_leading_and_trailing_spaces.java)
+16. [finding the longest common prefix](Finding_the_longest_common_prefix.java)
