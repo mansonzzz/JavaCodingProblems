@@ -6,7 +6,6 @@ import java.lang.reflect.Field;
  * @author zhangtian1
  */
 public class Immutable_objects_in_a_nutshell {
-
 }
 
 class StringClazz {
@@ -41,5 +40,23 @@ class StringClazz {
         byte[] value = (byte[]) valueFieldOfString.get(s);
         value[5] = '_';
         System.out.println("s = " + s);
+    }
+}
+
+final class ImmutableClazz {
+    private final double x;
+    private final double y;
+
+    public ImmutableClazz(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
     }
 }
