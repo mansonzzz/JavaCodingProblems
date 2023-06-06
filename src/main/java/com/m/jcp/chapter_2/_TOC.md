@@ -2,3 +2,4 @@
 2. [immutable objects in a nutshell](Immutable_objects_in_a_nutshell.java)
 3. [writing an immutable class via the Builder pattern](Writing_an_immutable_class_via_the_builder_pattern.java)
 4. [clone objects](Clone_objects.java)
+5. [switch expressions](Switch_expressions.java)
