@@ -1,6 +1,7 @@
 package com.m.jcp.chapter_5.sorting_an_array;
 
 import java.util.Arrays;
+import java.util.Comparator;
 
 /**
  * @author zhangtian1
@@ -13,8 +14,16 @@ public class Bubble_sort {
         // WORST CASE: O(n^2)
 //        bubbleSort(integers);
 //        bubbleSortOptimized(integers);
-        cockTailSort(integers);
+//        cockTailSort(integers);
 //        System.out.println(Arrays.toString(integers));
+        Melon melonA = new Melon("a", 1);
+        Melon melonB = new Melon("b", 2);
+        Melon melonC = new Melon("c", 3);
+        Melon melonD = new Melon("d", 4);
+        Melon melonE = new Melon("e", 5);
+        Melon[] melons = {melonE, melonD, melonC, melonB, melonA};
+        bubbleObj(melons, Comparator.comparingInt(Melon::getWeight));
+        System.out.println(Arrays.toString(melons));
     }
 
     /**
@@ -120,4 +129,18 @@ public class Bubble_sort {
 
         } while (left < right && cocktail);
     }
+
+    private static <T> void bubbleObj(T[] arr, Comparator<? super T> c) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (c.compare(arr[j], arr[j + 1]) > 0) {
+                    T temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
 }
