@@ -12,8 +12,9 @@ public class Bubble_sort {
         // AVERAGE CASE: O(n^2)å
         // WORST CASE: O(n^2)
 //        bubbleSort(integers);
-        bubbleSortOptimized(integers);
-        System.out.println(Arrays.toString(integers));
+//        bubbleSortOptimized(integers);
+        cockTailSort(integers);
+//        System.out.println(Arrays.toString(integers));
     }
 
     /**
@@ -74,5 +75,49 @@ public class Bubble_sort {
         }
     }
 
-    // TODO: 双向冒泡排序
+    /**
+     * [4, 5, 3, 2, 1]
+     * [4, 3, 5, 2, 1]
+     * [4, 3, 2, 5, 1]
+     * [4, 3, 2, 1, 5]
+     * [4, 3, 1, 2, 5]
+     * [4, 1, 3, 2, 5]
+     * [1, 4, 3, 2, 5]
+     * [1, 3, 4, 2, 5]
+     * [1, 3, 2, 4, 5]
+     * [1, 2, 3, 4, 5]
+     * <p>
+     * AVERAGE CASE: O(n^2)
+     * BEST CASE: O(n)
+     * WORST CASE: O(n^2)
+     */
+    private static void cockTailSort(int[] arr) {
+        int temp;
+        int j, left = 0, right = arr.length - 1;
+        boolean cocktail;
+        do {
+            cocktail = false;
+            for (j = left; j < right; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    // 有元素交换，所以不是有序，标记变量改变
+                    cocktail = true;
+                }
+                System.out.println(Arrays.toString(arr));
+            }
+            right--;
+            for (j = right; j > left; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    temp = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = temp;
+                }
+                System.out.println(Arrays.toString(arr));
+            }
+            left++;
+
+        } while (left < right && cocktail);
+    }
 }
