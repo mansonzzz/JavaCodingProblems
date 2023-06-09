@@ -4,3 +4,4 @@
 4. [sorting an array counting sort](sorting_an_array/Counting_sort.java)
 5. [sorting an array heap sort](sorting_an_array/Heap_sort.java)
 6. [finding an element in an array](Finding_an_element_in_an_array.java)
+7. [next greater element](Next_greater_element.java)
