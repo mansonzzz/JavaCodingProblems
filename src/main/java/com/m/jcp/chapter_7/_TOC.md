@@ -1,2 +1,5 @@
 1. [inspecting classes](Inspecting_classes.java)
 2. [instantiating via a reflected constructor](Instantiating_via_a_reflected_constructor.java)
+3. [instantiating via a class from a JAR](Instantiating_a_class_from_a_JAR.java)
+4. [instantiating via a reflected constructor](Instantiating_via_a_reflected_constructor.java)
+5. [getting the annotation of a receiver type](getting_the_annotation_of_a_receiver_type/Getting_the_annotation_of_a_receiver_type.java)

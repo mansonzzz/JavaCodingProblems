@@ -49,10 +49,10 @@ public class Instantiating_via_a_reflected_constructor {
         @Override
         public String toString() {
             return "Car{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", color=" + color +
-                    '}';
+                   "id=" + id +
+                   ", name='" + name + '\'' +
+                   ", color=" + color +
+                   '}';
         }
 
         static class Color {
