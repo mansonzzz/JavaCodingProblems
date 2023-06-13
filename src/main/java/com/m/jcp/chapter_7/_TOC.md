@@ -4,3 +4,4 @@
 4. [instantiating via a reflected constructor](Instantiating_via_a_reflected_constructor.java)
 5. [getting the annotation of a receiver type](getting_the_annotation_of_a_receiver_type/Getting_the_annotation_of_a_receiver_type.java)
 6. [access via the reflection api](Access_via_the_Reflection_API.java)
+7. [getting generic types](Getting_generic_types.java)
