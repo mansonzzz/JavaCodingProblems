@@ -1,7 +1,10 @@
 package com.m.jcp.chapter_7;
 
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -22,7 +25,6 @@ public class Getting_generic_types {
 
         if (genericType instanceof ParameterizedType type) {
             Type[] typeOfArguments = type.getActualTypeArguments();
-
             for (Type typeOfArgument : typeOfArguments) {
                 Class<?> classTypeOfArgument = (Class<?>) typeOfArgument;
                 System.out.println("Class of type argument: "
@@ -30,6 +32,23 @@ public class Getting_generic_types {
 
                 System.out.println("Simple name of type argument: "
                                    + classTypeOfArgument.getSimpleName());
+            }
+        }
+    }
+}
+
+class Test {
+    public void testMethod() throws IOException, SQLException {
+    }
+
+    public static void main(String[] args) {
+        Method[] methods = Test.class.getMethods();
+        for (Method method : methods) {
+            if (method.getName().equals("testMethod")) {
+                Type[] exceptionTypes = method.getGenericExceptionTypes();
+                for (Type type : exceptionTypes) {
+                    System.out.println(type.getTypeName());
+                }
             }
         }
     }
