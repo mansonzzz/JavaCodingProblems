@@ -22,14 +22,12 @@ public class Getting_generic_types {
     }
 
     public static void printGenerics(Type genericType) {
-
         if (genericType instanceof ParameterizedType type) {
             Type[] typeOfArguments = type.getActualTypeArguments();
             for (Type typeOfArgument : typeOfArguments) {
                 Class<?> classTypeOfArgument = (Class<?>) typeOfArgument;
                 System.out.println("Class of type argument: "
                                    + classTypeOfArgument);
-
                 System.out.println("Simple name of type argument: "
                                    + classTypeOfArgument.getSimpleName());
             }
