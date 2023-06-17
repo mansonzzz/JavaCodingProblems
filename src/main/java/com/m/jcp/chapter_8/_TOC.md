@@ -3,3 +3,5 @@
 3. [factory pattern](factory_pattern/Main.java)
 4. [strategy pattern](strategy_pattern/Main.java)
 5. [template method pattern](template_method_pattern/Main.java)
+6. [observer pattern](observer_pattern/Main.java)
+7. [loan pattern](loan_pattern/Main.java)
