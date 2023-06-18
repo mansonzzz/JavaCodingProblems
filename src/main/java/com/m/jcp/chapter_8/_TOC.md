@@ -5,3 +5,5 @@
 5. [template method pattern](template_method_pattern/Main.java)
 6. [observer pattern](observer_pattern/Main.java)
 7. [loan pattern](loan_pattern/Main.java)
+8. [decorator pattern](decorator_pattern/Main.java)
+9. [command pattern](command_pattern/Main.java)
