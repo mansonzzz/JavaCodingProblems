@@ -1,5 +1,7 @@
 package com.m.jcp.chapter_7.getting_the_annotation_of_a_receiver_type;
 
+import java.util.Objects;
+
 /**
  * @author zhangtian1
  */
@@ -30,5 +32,18 @@ public class Melon {
                "type='" + type + '\'' +
                ", weight=" + weight +
                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Melon melon = (Melon) o;
+        return weight == melon.weight && Objects.equals(type, melon.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type, weight);
     }
 }

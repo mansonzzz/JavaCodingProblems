@@ -2,3 +2,5 @@
 2. [lambda as return](lambda_as_result/LambdaAsResult.java)
 3. [test lambda method](test_lambda_method/TestLambdaMethod.java)
 4. [debugging lambda](debugging_lambda/DebuggingLambda.java)
+5. [infinite stream](infinite_stream/Main.java)
+6. [mapping elements of stream](mapping_elements_of_stream/Map.java)
