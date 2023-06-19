@@ -4,3 +4,4 @@
 4. [debugging lambda](debugging_lambda/DebuggingLambda.java)
 5. [infinite stream](infinite_stream/Main.java)
 6. [mapping elements of stream](mapping_elements_of_stream/Map.java)
+7. [grouping](grouping/Main.java)
