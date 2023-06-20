@@ -8,3 +8,4 @@
 8. [filtering](Filtering.java)
 9. [mapping](Mapping.java)
 10. [flat mapping](FlatMapping.java)
+11. [teeing](Teeing.java)
