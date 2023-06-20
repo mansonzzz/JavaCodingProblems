@@ -11,3 +11,4 @@
 11. [teeing](Teeing.java)
 12. [writing custom collector](writing_custom_collector/Main.java)
 13. [method reference](method_reference/Main.java)
+14. [composing functions](Composing_functions.java)
