@@ -9,3 +9,4 @@
 9. [mapping](Mapping.java)
 10. [flat mapping](FlatMapping.java)
 11. [teeing](Teeing.java)
+12. [writing custom collector](writing_custom_collector/Main.java)
