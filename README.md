@@ -10,6 +10,7 @@ Java Coding Problems 读书笔记
 
 | Title                                                    | Desc                                                                   |
 |----------------------------------------------------------|------------------------------------------------------------------------|
+| [Tips](src/main/java/com/m/jcp/tips/_TOC.md)             | Tips                                                                   |
 | [Chapter 1](src/main/java/com/m/jcp/chapter_1/_TOC.md)   | Strings,Numbers,and Math                                               |
 | [Chapter 2](src/main/java/com/m/jcp/chapter_2/_TOC.md)   | Objects, Immutability, and Switch Expressions                          | 
 | [Chapter 5](src/main/java/com/m/jcp/chapter_5/_TOC.md)   | Arrays, Collections, and Data Structures                               |
