@@ -2,3 +2,4 @@
 2. [synchronized](lock_synchronized/Main.java)
 3. [thread pool](pool/Main.java)
 4. [thread pool single](pool/single_thread/Main.java)
+5. [thread pool fixed](pool/fixed_thread/Main.java)
