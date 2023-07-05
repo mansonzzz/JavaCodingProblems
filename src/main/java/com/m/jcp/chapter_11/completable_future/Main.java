@@ -8,7 +8,13 @@ public class Main {
     public static void main(String[] args) throws Exception {
 //        CustomerAsyncs.printOrder();
 //        CustomerAsyncs.fetchOrderSummary();
-        CustomerAsyncs.fetchOrderSummaryExecutor();
+//        CustomerAsyncs.fetchOrderSummaryExecutor();
 //        CustomerAsyncs.fetchInvoiceTotalSign();
+//        CustomerAsyncs.fetchAndPrintOrder();
+//        CustomerAsyncs.fetchNonChainCallUseThenApplyAsync();
+//        CustomerAsyncs.deliverOrderNotifyCustomer();
+//        CustomerAsyncs.fetchV1();
+//        CustomerAsyncs.fetchV2();
+        CustomerAsyncs.fetchV3();
     }
 }
