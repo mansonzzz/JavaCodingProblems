@@ -14,7 +14,7 @@ import java.util.stream.Stream;
  * R: 返回结果类型
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         List<Melon> melons = Arrays.asList(new Melon("Crenshaw", 1200),
                 new Melon("Gac", 3000), new Melon("Hemi", 2600),
                 new Melon("Hemi", 1600), new Melon("Gac", 1200),
@@ -27,8 +27,8 @@ public class Main {
                 // 使用并行流，combiner() 方法会被调用
                 .parallelStream()
                 .collect(new MelonCollector());
-        assert result.get(true).size() == 4;
-        assert result.get(false).size() == 5;
+        assert result.get(true).size() == 5;
+        assert result.get(false).size() == 4;
 
         System.out.println(">>> *** <<<");
 

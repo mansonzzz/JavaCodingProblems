@@ -25,3 +25,8 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+// add -ea to all JavaExec tasks (only for demo)
+tasks.withType(JavaExec).configureEach {
+    jvmArgs '-ea'
+}

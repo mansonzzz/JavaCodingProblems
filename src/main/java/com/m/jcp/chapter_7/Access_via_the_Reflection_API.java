@@ -16,7 +16,7 @@ public class Access_via_the_Reflection_API {
     public static void main(String[] args) throws Exception {
         Class<Melon> melonClass = Melon.class;
         Class<Melon.Inner> innerClass = Melon.Inner.class;
-        assert melonClass.getNestHost() == innerClass;
+        assert melonClass.getNestHost() == melonClass;
         assert melonClass.getNestHost() == innerClass.getNestHost();
         System.out.println(Arrays.toString(melonClass.getNestMembers())); // [class com.m.jcp.chapter_7.Melon, class com.m.jcp.chapter_7.Melon$Inner]
 

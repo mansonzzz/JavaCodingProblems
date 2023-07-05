@@ -57,7 +57,7 @@ public class Main {
         // objs.add(new Person()); // 编译错误
         // 取出来的元素只能是 Object，因为向上转型为 Object
         Object o = objs.get(0);
-        assert o == null;
+        assert o != null;
         // objs 里的元素在编译器被类型擦除了，但是在运行时元素还是能知道自己的实际类型
         assert o instanceof Student;
         assert o instanceof Object;
