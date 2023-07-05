@@ -13,8 +13,8 @@ public class Main {
 //        CustomerAsyncs.fetchAndPrintOrder();
 //        CustomerAsyncs.fetchNonChainCallUseThenApplyAsync();
 //        CustomerAsyncs.deliverOrderNotifyCustomer();
-//        CustomerAsyncs.fetchV1();
+        CustomerAsyncs.fetchV1();
 //        CustomerAsyncs.fetchV2();
-        CustomerAsyncs.fetchV3();
+//        CustomerAsyncs.fetchV3();
     }
 }

@@ -166,12 +166,10 @@ public class CustomerAsyncs {
 
     public static void fetchV1() {
         ExecutorService e = Executors.newSingleThreadExecutor(r -> new Thread(r, "CS-1"));
-        CompletableFuture<Integer> f = CompletableFuture.supplyAsync(() -> {
+        CompletableFuture.supplyAsync(() -> {
             System.out.println(Thread.currentThread().getName()); // CS-1
             return 42;
-        }, e);
-
-        CompletableFuture<String> f2 = f.thenApply(i -> {
+        }, e).thenApply(i -> {
             // 回调是在调用thenApply的线程(main)上执行的
             System.out.println(Thread.currentThread().getName()); // main
             return i.toString();
