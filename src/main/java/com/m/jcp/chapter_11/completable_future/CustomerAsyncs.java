@@ -3,6 +3,7 @@ package com.m.jcp.chapter_11.completable_future;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 
+import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.*;
 
@@ -212,6 +213,128 @@ public class CustomerAsyncs {
                     return 42;
                 })
                 // 在注册thenApply前，f未完成(此时会由上一个线程执行)
-                .thenRun(() -> System.out.println(Thread.currentThread().getName())).join();
+                .thenApply(s -> {
+                    System.out.println(Thread.currentThread().getName());
+                    return s + " hello world";
+                }).join();
+    }
+
+    public static void fetchOrderTotalException() throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> cf = CompletableFuture.supplyAsync(() -> {
+            log.info(">>> Compute total by:{}", Thread.currentThread().getName());
+            int i = new Random().nextInt(1000);
+            if (i < 500) {
+                throw new IllegalStateException("total is less than 500");
+            }
+            return 1000;
+        }).exceptionally(ex -> {
+            log.error(">>> Compute total error:{}", ex.getMessage(), ex);
+            return 0;
+        });
+        int result = cf.get();
+        log.info(">>> Total is:{}", result);
+    }
+
+    public static void fetchInvoiceTotalSignChainOfException()
+            throws InterruptedException, ExecutionException {
+        CompletableFuture<String> cf = CompletableFuture.supplyAsync(() -> {
+                    log.info(">>> Fetch invoice by:{}", Thread.currentThread().getName());
+                    int i = new Random().nextInt(1000);
+                    if (i < 500) {
+                        throw new IllegalStateException("Invoice service is not responding");
+                    }
+                    return "Invoice-1";
+                })
+                .thenApply(o -> {
+                    int surrogate = new Random().nextInt(1000);
+                    if (surrogate < 500) {
+                        throw new IllegalStateException(
+                                "Total service is not responding");
+                    }
+
+                    return o + " Total: $145";
+                })
+                .thenApply(o -> {
+                    log.info(">>> Sign invoice by:{}", Thread.currentThread().getName());
+                    int surrogate = new Random().nextInt(1000);
+                    if (surrogate < 500) {
+                        throw new IllegalStateException(
+                                "Signing service is not responding");
+                    }
+                    return o + " signed";
+                }).exceptionally(ex -> {
+                    log.error(">>> Sign invoice error:{}", Thread.currentThread().getName(), ex);
+                    return "[Exception]";
+                });
+        String result = cf.get();
+        log.info(">>> Invoice is:{}", result);
+    }
+
+    public static void fetchOrderTotalExceptionAsync() throws ExecutionException, InterruptedException {
+        ExecutorService executor = Executors.newSingleThreadExecutor(r -> new Thread(r, "CS-1"));
+
+        CompletableFuture<Integer> totalOrder
+                = CompletableFuture.supplyAsync(() -> {
+
+            log.info(">>> Compute total by:{}", Thread.currentThread().getName());
+
+            int surrogate = new Random().nextInt(1000);
+            if (surrogate < 900) {
+                throw new IllegalStateException("<<< Computing service is not responding");
+            }
+
+            return 1000;
+        }).exceptionallyAsync(ex -> {
+            log.error("<<< Thread:{},\nException:{}", Thread.currentThread().getName(), ex.getMessage());
+            return 0;
+        }, executor);
+
+        int result = totalOrder.get();
+        log.info(">>> Total:{}", result);
+        executor.shutdownNow();
+    }
+
+    public static void printInvoiceException() {
+        CompletableFuture<String> cf
+                = CompletableFuture.supplyAsync(() -> {
+
+            int surrogate = new Random().nextInt(1000);
+            if (surrogate < 900) {
+                throw new IllegalStateException("Printing service is not responding");
+            }
+            return "192.168.1.0";
+        });
+
+        CompletableFuture<String> cfBackup = CompletableFuture.supplyAsync(() -> "192.192.192.192");
+
+        cf.exceptionallyCompose(th -> {
+            log.error(">>> Exception:{}", th.getMessage(), th);
+            return cfBackup;
+        }).thenAccept((ip) -> log.info(">>> Print invoice by:{}", ip));
+    }
+
+    public static void fetchTotalHandle() throws ExecutionException, InterruptedException {
+        CompletableFuture<Integer> totalOrder = CompletableFuture.supplyAsync(() -> {
+            log.info(">>> Compute total by:{}", Thread.currentThread().getName());
+            int surrogate = new Random().nextInt(1000);
+            if (surrogate < 500) {
+                throw new IllegalStateException(
+                        "Computing service is not responding");
+            }
+            return 1000;
+        }).handle((res, ex) -> {
+            if (ex != null) {
+                log.error("<<< Thread:{}\n Exception:{}", Thread.currentThread().getName(), ex.getMessage());
+                return 0;
+            }
+            if (res != null) {
+                int vat = res * 24 / 100;
+                res += vat;
+            }
+            return res;
+        });
+
+        int result = totalOrder.get();
+        log.info(">>> Total:{}", result);
     }
 }
