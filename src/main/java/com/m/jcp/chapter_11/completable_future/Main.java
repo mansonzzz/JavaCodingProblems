@@ -60,19 +60,31 @@ public class Main {
     /**
      * 深度优先遍历
      */
-    public static void testForPostComplete() throws ExecutionException, InterruptedException {
-        CompletableFuture<String> base = new CompletableFuture<>();
-        CompletableFuture<String> future = base.thenApply(s -> {
-            log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), "2");
-            return s + " 2";
+    public static void testForPostComplete() {
+        CompletableFuture<String> task1 = new CompletableFuture<>();
+        CompletableFuture<String> task2 = task1.thenApply(t -> {
+            System.out.println("2");
+            return "2";
         });
-        // 使用 thenAccept 时，平级任务也是顺序执行的，每出栈一个任务就会顺序执行这个任务持有的任务栈
-        // 使用 thenApplyAsync 时，平级任务是并行执行的
-        // base.thenAcceptAsync(s -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), s + "3-1")).thenAccept(aVoid -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), "3-2"));
-        base.thenAccept(s -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), s + "3-1")).thenAccept(aVoid -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), "3-2"));
-        base.thenAccept(s -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), s + "4-1")).thenAccept(aVoid -> log.info(">>> Thread:{},Result:{}", Thread.currentThread().getName(), "4-2"));
-        base.complete("1");
-        log.info("base result: {}", base.get());
-        log.info("future result: {}", future.get());
+        task2.thenAccept(t -> System.out.println("2.1"));
+        task2.thenAccept(t -> System.out.println("2.2"))
+                .thenAccept(t -> System.out.println("2.2.1"))
+                .thenAccept(t -> System.out.println("2.2.1.1"));
+
+        CompletableFuture<String> task3 = task1.thenApply(t -> {
+            System.out.println("3");
+            return "3";
+        });
+        task3.thenAccept(t -> System.out.println("3.1"));
+        task3.thenAccept(t -> System.out.println("3.2"))
+                .thenAccept(t -> System.out.println("3.2.1"))
+                .thenAccept(t -> System.out.println("3.2.1.1"));
+
+        CompletableFuture<String> task4 = task1.thenApply(t -> {
+            System.out.println("4");
+            return "4";
+        });
+
+        task1.complete("1");
     }
 }
