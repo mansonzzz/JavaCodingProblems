@@ -1,4 +1,4 @@
-package com.m.jcp.chapter_11.completable_future;
+package com.m.jcp.chapter_11;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author zhangtian1
  */
 @Slf4j
-public class StartTest {
+public class BusyWaiting {
 
     private volatile boolean serviceAvailable;
 
@@ -26,7 +26,7 @@ public class StartTest {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        var startTest = new StartTest();
+        var startTest = new BusyWaiting();
         startTest.service();
         Thread.sleep(5000);
         startTest.setServiceAvailable(true);
