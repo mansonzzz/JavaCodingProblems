@@ -2,3 +2,4 @@
 - [completable future](completable_future/Main.java)
 - [Optimizing busy waiting](BusyWaiting.java)
 - [Task Cancellation](TaskCancellation.java)
+- [ThreadLocal](thread_local/ThreadSafeStringBuilder.java)
